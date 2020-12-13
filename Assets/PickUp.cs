@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public Transform dest;
+    public GameObject playerModel; 
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,11 @@ public class PickUp : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<Rigidbody>().useGravity = false;
-        this.transform.position = this.dest.position;
-        this.transform.parent = GameObject.Find("Destination").transform;
+        this.transform.position = GameObject.Find("PlayerHand").transform.position;
+        this.transform.parent = GameObject.Find("PlayerHand").transform;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll | RigidbodyConstraints.FreezeRotation;
+
 
     }
 
